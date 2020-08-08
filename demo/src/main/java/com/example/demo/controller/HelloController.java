@@ -5,14 +5,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-  @RequestMapping("/hello") // URIを指定する
+  @RequestMapping("/") // URIを指定する
   public String index() {
     return "hello"; // viewのファイル名を拡張子なしで記述する
   }
 
+  // todolistの一覧表示をする
   @RequestMapping("/todolist")
-  public String test() {
+  public String getTodolist() {
     return "todolist";
   }
+
+  // todolistの登録をする
 
 }
