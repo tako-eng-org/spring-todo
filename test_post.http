@@ -1,0 +1,11 @@
+# REST API テスト用ファイル
+# VSCodeの拡張機能「REST Client」を実行するためのファイルです。
+# 実行方法：Mac: Cmd + Alt + R またはステートメント中の「Send Request」をクリックする
+# 参考： https://qiita.com/toshi0607/items/c4440d3fbfa72eac840c
+POST http://localhost:8080/register HTTP/1.1
+cotent-Type: application/json
+
+{
+  "body": "TEST"
+  
+}

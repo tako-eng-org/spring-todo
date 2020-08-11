@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+// 日時情報など、1テーブルごとに必要になるような情報
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractModel {
   @Column(nullable = false)

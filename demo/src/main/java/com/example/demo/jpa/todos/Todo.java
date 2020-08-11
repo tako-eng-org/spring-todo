@@ -12,19 +12,20 @@ import com.example.demo.jpa.AbstractModel;
 
 @Entity
 @Table(name = "todos")
-@Getter
-@Setter
+@Getter // lombokによる
+@Setter // lombokによる
 public class Todo extends AbstractModel {
   @Id
   @GeneratedValue
-  private Integer id;
+  private Integer id; // 主キー(自動採番)
 
   @Column(nullable = false)
-  private String body;
+  private String body; // TODOリストの本文
 
+  // AbstractModelの2つもここに入っているイメージ
+
+  // // setter,getterはlombokにより生成しているので不要。
   // public void setBody(String body) {
   // this.body = body;
   // }
-
-  // AbstractModelの2つもここに入っているイメージ
 }

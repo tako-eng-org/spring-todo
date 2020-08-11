@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
   <head>
-    <meta charset="UTF-8" />
-    <title>TodoList!!!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>TodoList</title>
+    <!-- 背景色のみCSSで設定。修正予定 -->
+    <!-- <style type="text/css">
+      body {
+        background-color: #edbb34;
+      } -->
+    </style>
   </head>
+
   <body>
-    <h1>HelloWorld３</h1>
+    <h1>todolistアプリ</h1>
+    <main>
+      <section>
+        <div id="contents">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1>フォーム</h1>
+                <form action="/register" method="POST">
+                  <input type="text" name="message" />
+                  <button type="submit">送信</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <!-- <div th:insert="footer :: copy"></div>
     <div th:insert="footer :: copy"></div>
     <div th:insert="footer :: copy"></div> -->
