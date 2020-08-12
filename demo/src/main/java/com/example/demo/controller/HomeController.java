@@ -20,6 +20,9 @@ public class HomeController {
   @GetMapping(value = "/") // URIを指定する
   public String index(Model model, Todo todo) {
     model.addAttribute("todo", new Todo());
+    // ページのentityを取得する
+    // https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/PagingAndSortingRepository.html?is-external=true#findAll-org.springframework.data.domain.Pageable-
+    model.addAttribute("allRecords", todoRepository.findAll());
     return "list"; // viewのファイル名を拡張子なしで記述する
   }
 
