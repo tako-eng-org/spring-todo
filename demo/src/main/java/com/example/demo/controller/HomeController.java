@@ -16,27 +16,21 @@ public class HomeController {
   @Autowired // DI.newしなくても使えるようになる
   TodoRepository todoRepository;
 
-  @RequestMapping("/") // URIを指定する
-  public String index() {
+  // 一覧表示処理
+  @GetMapping(value = "/") // URIを指定する
+  public String index(Model model, Todo todo) {
+    model.addAttribute("todo", new Todo());
     return "list"; // viewのファイル名を拡張子なしで記述する
   }
 
-  // 一覧表示処理
-  @GetMapping(value = "/list")
-  public String list(Model model) {
-    // ここでしていること→generated name を使用して、この Map に提供された属性を追加します。
-    // ここでしていることは？
-    model.addAttribute("todo", new Todo());
-    return "list";
-  }
-
   // 登録処理
-  @PostMapping(value = "/list")
+  @PostMapping(value = "/")
   public String registerSubmit(@ModelAttribute Todo todo, Model model) {
-    model.addAttribute("list", todo);
-    // todo.setBody("TEST");
-    // todoRepository.save(todo);
-    return "result";
+    model.addAttribute("todo", todo);
+    todo.setBody(todo.getBody());
+    todoRepository.save(todo);
+    // TODO ファイル名変更する
+    return "result_bkup";
   }
 
   // // 削除処理

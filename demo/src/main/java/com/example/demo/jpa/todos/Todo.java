@@ -20,7 +20,7 @@ public class Todo extends AbstractModel {
   private Integer id; // 主キー(自動採番)
 
   @Column(nullable = false)
-  private String body; // TODOリストの本文
+  private String body = "testBody"; // TODOリストの本文
 
   // AbstractModelの2つもここに入っているイメージ
 
