@@ -2,27 +2,25 @@
 <html xmlns:th="https://www.thymeleaf.org">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>TodoList</title>
-    <!-- 背景色のみCSSで設定。修正予定 -->
-    <!-- <style type="text/css">
-      body {
-        background-color: #edbb34;
-      } -->
+    <title>result</title>
     </style>
   </head>
 
   <body>
-    <h1>todolistアプリ</h1>
+    <h1>result</h1>
     <main>
       <section>
         <div id="contents">
           <div class="container">
             <div class="row">
               <div class="col">
-                <h1>フォーム</h1>
-                <form action="/register" method="POST">
-                  <input type="text" name="message"/>
-                  <button type="submit">送信</button>
+                <h1>結果</h1>
+                    <h1>Result</h1>
+                    <div th:object="${todo}"></div>
+                    <!-- <p th:text="'id: ' + ${todo.id}" />
+                    <p th:text="'body: ' + ${todo.body}" />
+                        <a href="/todo">Submit another message</a>
+                         -->
                 </form>
               </div>
             </div>

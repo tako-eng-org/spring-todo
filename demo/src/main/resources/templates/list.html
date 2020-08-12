@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>TodoList</title>
+  </head>
+
+  <body>
+    <!-- 一覧表示する画面。登録や削除もこの画面から行う。 -->
+    <h1>todolist</h1>
+    <main>
+      <section>
+        <div id="contents">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <!-- TODO ここに一覧表示する -->
+                <h1>フォーム</h1>
+                <form
+                  action="#"
+                  th:action="@{/list}"
+                  th:object="${todo}"
+                  method="post"
+                >
+                  <!-- <p>Id: <input type="text" th:field="*{id}" /></p> -->
+                  <p>Message: <input type="text" th:field="*{body}" /></p>
+                  <p><input type="submit" value="Submit" /></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <div th:insert="footer :: copy"></div>
+    <div th:insert="footer :: copy"></div>
+    <div th:insert="footer :: copy"></div> -->
+    <!-- <input type="checkbox" /> -->
+  </body>
+  <!-- <footer th:fragment="copy"> -->
+  <!-- &copy; 2011 The Good Thymes Virtual Grocery -->
+  <!-- </footer> -->
+</html>

@@ -5,8 +5,11 @@ import com.example.demo.jpa.todos.Todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class HomeController {
@@ -15,15 +18,25 @@ public class HomeController {
 
   @RequestMapping("/") // URIを指定する
   public String index() {
-    return "todolist"; // viewのファイル名を拡張子なしで記述する
+    return "list"; // viewのファイル名を拡張子なしで記述する
+  }
+
+  // 一覧表示処理
+  @GetMapping(value = "/list")
+  public String list(Model model) {
+    // ここでしていること→generated name を使用して、この Map に提供された属性を追加します。
+    // ここでしていることは？
+    model.addAttribute("list", new Todo());
+    return "list";
   }
 
   // 登録処理
-  @PostMapping(value = "/register")
-  public String register(Todo todo) {
-    todo.setBody("TEST");
-    todoRepository.save(todo);
-    return "";
+  @PostMapping(value = "/list")
+  public String registerSubmit(@ModelAttribute Todo todo, Model model) {
+    model.addAttribute("list", todo);
+    // todo.setBody("TEST");
+    // todoRepository.save(todo);
+    return "result";
   }
 
   // // 削除処理
