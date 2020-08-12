@@ -26,7 +26,7 @@ public class HomeController {
   public String list(Model model) {
     // ここでしていること→generated name を使用して、この Map に提供された属性を追加します。
     // ここでしていることは？
-    model.addAttribute("list", new Todo());
+    model.addAttribute("todo", new Todo());
     return "list";
   }
 
