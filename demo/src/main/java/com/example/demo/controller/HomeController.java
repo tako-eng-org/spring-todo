@@ -26,7 +26,7 @@ public class HomeController {
     model.addAttribute("todo", new Todo());
     // ページのentityを取得する
     // https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/PagingAndSortingRepository.html?is-external=true#findAll-org.springframework.data.domain.Pageable-
-    ArrayList<Todo> list = (ArrayList) todoRepository.findAll();
+    List<Todo> list = todoRepository.findAll();
     model.addAttribute("allRecords", list);
     return "list"; // viewのファイル名を拡張子なしで記述する
   }
