@@ -9,12 +9,10 @@
     <!-- 一覧表示する画面。登録や削除もこの画面から行う。 -->
     <h1>todolist</h1>
     <!-- //TODO todosテーブルのレコード一覧を表示する -->
-    <form action="#" th:action="@{/}" th:object="${allRecords}" method="get">
-      <tr th:each="record : ${allRecords}">
-        <td th:text="${allRecords.id}"></td>
-        <td th:text="${allRecords.body}"></td>
-      </tr>
-    </form>
+    <ul th:each="record : ${allRecords}">
+      <li th:text="${record.id}"></li>
+      <li th:text="${record.body}"></li>
+    </ul>
 
     <main>
       <section>
