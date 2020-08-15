@@ -6,36 +6,36 @@
   </head>
 
   <body>
-    <!-- 一覧表示する画面。登録や削除もこの画面から行う。 -->
-    <h1>todolist</h1>
-    <!-- //TODO todosテーブルをレコード数分表示する -->
-    <div id="contents">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="form-check">
-              <ul th:each="record : ${allRecords}">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-id" th:text="${record.id}"></label>
-                <label
-                  class="form-check-label"
-                  th:text="${record.body}"
-                ></label>
-              </ul>
+    <main>
+      <section>
+        <!-- 一覧表示する画面。登録や削除もこの画面から行う。 -->
+        <h1>todolist</h1>
+        <!-- //TODO todosテーブルをレコード数分表示する -->
+        <div id="contents">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-check">
+                  <ul th:each="record : ${allRecords}">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck1"
+                    />
+                    <label class="form-check-id" th:text="${record.id}"></label>
+                    <label
+                      class="form-check-label"
+                      th:text="${record.body}"
+                    ></label>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <main>
-      <section>
-        <!-- //TODO boot strapのテーブルに書き換える -->
+        <!-- 登録ボタン -->
         <div id="contents">
           <div class="container">
             <div class="row">
@@ -46,21 +46,45 @@
                   th:object="${todo}"
                   method="post"
                 >
-                  <!-- <p>Id: <input type="text" th:field="*{id}" /></p> -->
                   <p>Message: <input type="text" th:field="*{body}" /></p>
-                  <p><input type="submit" value="Submit" /></p>
+                  <p><input type="submit" value="登録" /></p>
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </main>
 
-    <!-- <div th:insert="footer :: copy"></div>
+        <!-- 削除ボタン -->
+        <div id="contents">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <form
+                  action="#"
+                  th:action="@{/remove}"
+                  th:object="${todo}"
+                  method="post"
+                >
+                  <p><input type="submit" value="削除" /></p>
+                  <p>
+                    <input
+                      type="hidden"
+                      name="removeId"
+                      th:value="${todo.id}"
+                    />
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div th:insert="footer :: copy"></div>
     <div th:insert="footer :: copy"></div>
     <div th:insert="footer :: copy"></div> -->
-    <!-- <input type="checkbox" /> -->
+        <!-- <input type="checkbox" /> -->
+      </section>
+    </main>
   </body>
   <!-- <footer th:fragment="copy"> -->
   <!-- &copy; 2011 The Good Thymes Virtual Grocery -->

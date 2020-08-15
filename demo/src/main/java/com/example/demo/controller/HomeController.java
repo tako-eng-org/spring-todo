@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.jpa.todos.TodoRepository;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.example.demo.jpa.todos.Todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +38,17 @@ public class HomeController {
     model.addAttribute("todo", todo);
     todo.setBody(todo.getBody());
     todoRepository.save(todo);
-    // return "result_bkup";
     return index(model, todo);
   }
 
-  // // 削除処理
-  // @PostMapping(value = "/remove")
-  // public String remove() {
-  // // TODO 処理
-  // return "";
-  // }
+  // 削除処理
+  @PostMapping(value = "/remove")
+  public String removeSubmit(@ModelAttribute Todo todo, Model model) {
+    boolean myBooleanVariable = false;
+    // model.addAttribute("myBooleanVariable", myBooleanVariable);
+    model.getAttribute("removeId");
+    todoRepository.delete(id);
+    return index(model, todo);
+  }
 
 }
