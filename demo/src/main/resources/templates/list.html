@@ -8,11 +8,30 @@
   <body>
     <!-- 一覧表示する画面。登録や削除もこの画面から行う。 -->
     <h1>todolist</h1>
-    <!-- //TODO todosテーブルのレコード一覧を表示する -->
-    <ul th:each="record : ${allRecords}">
-      <li th:text="${record.id}"></li>
-      <li th:text="${record.body}"></li>
-    </ul>
+    <!-- //TODO todosテーブルをレコード数分表示する -->
+    <div id="contents">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-check">
+              <ul th:each="record : ${allRecords}">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="defaultCheck1"
+                />
+                <label class="form-check-id" th:text="${record.id}"></label>
+                <label
+                  class="form-check-label"
+                  th:text="${record.body}"
+                ></label>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <main>
       <section>
@@ -21,8 +40,6 @@
           <div class="container">
             <div class="row">
               <div class="col">
-                <!-- TODO ここに一覧表示する -->
-                <h1>フォーム</h1>
                 <form
                   action="#"
                   th:action="@{/}"

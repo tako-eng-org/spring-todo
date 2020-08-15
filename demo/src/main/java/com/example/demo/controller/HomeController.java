@@ -37,8 +37,8 @@ public class HomeController {
     model.addAttribute("todo", todo);
     todo.setBody(todo.getBody());
     todoRepository.save(todo);
-    // TODO ファイル名変更する
-    return "result_bkup";
+    // return "result_bkup";
+    return index(model, todo);
   }
 
   // // 削除処理
