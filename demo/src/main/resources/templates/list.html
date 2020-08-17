@@ -16,69 +16,40 @@
             <div class="row">
               <div class="col">
                 <div class="form-check">
-                  <ul th:each="record : ${allRecords}">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="defaultCheck1"
-                    />
-                    <label class="form-check-id" th:text="${record.id}"></label>
-                    <label
-                      class="form-check-label"
-                      th:text="${record.body}"
-                    ></label>
-                  </ul>
+                  <form action="#" th:action="@{/remove}" method="post">
+                    <ul th:each="record : ${allRecords}">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="id"
+                        th:value="${record.id}"
+                      />
+                      <label
+                        class="form-check-id"
+                        th:text="${record.id}"
+                      ></label>
+                      <label
+                        class="form-check-label"
+                        th:text="${record.body}"
+                      ></label>
+                    </ul>
+                    <p><input type="submit" value="削除" /></p>
+                  </form>
+
+                  <form
+                    action="#"
+                    th:action="@{/register}"
+                    th:object="${todo}"
+                    method="post"
+                  >
+                    <p>Message: <input type="text" th:field="*{body}" /></p>
+                    <p><input type="submit" value="登録" /></p>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- 登録ボタン -->
-        <div id="contents">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <form
-                  action="#"
-                  th:action="@{/}"
-                  th:object="${todo}"
-                  method="post"
-                >
-                  <p>Message: <input type="text" th:field="*{body}" /></p>
-                  <p><input type="submit" value="登録" /></p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 削除ボタン -->
-        <div id="contents">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <form
-                  action="#"
-                  th:action="@{/remove}"
-                  th:object="${todo}"
-                  method="post"
-                >
-                  <p><input type="submit" value="削除" /></p>
-                  <p>
-                    <input
-                      type="hidden"
-                      name="removeId"
-                      th:value="${todo.id}"
-                    />
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- <div th:insert="footer :: copy"></div>
     <div th:insert="footer :: copy"></div>
     <div th:insert="footer :: copy"></div> -->

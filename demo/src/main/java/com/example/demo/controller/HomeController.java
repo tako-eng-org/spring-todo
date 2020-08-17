@@ -24,6 +24,7 @@ public class HomeController {
   // 一覧表示処理
   @GetMapping(value = "/") // URIを指定する
   public String index(Model model, Todo todo) {
+    // viewと共有する変数の定義
     model.addAttribute("todo", new Todo());
     // ページのentityを取得する
     // https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/PagingAndSortingRepository.html?is-external=true#findAll-org.springframework.data.domain.Pageable-
@@ -33,22 +34,31 @@ public class HomeController {
   }
 
   // 登録処理
-  @PostMapping(value = "/")
-  public String registerSubmit(@ModelAttribute Todo todo, Model model) {
-    model.addAttribute("todo", todo);
-    todo.setBody(todo.getBody());
+  @PostMapping(value = "/register")
+  public String register(@ModelAttribute Todo todo, Model model) {
+    // 登録処理において、viewの表示は行っていないため、この定義は不要。
+    // model.addAttribute("todo", todo);
+    // todo.setBody(todo.getBody());
     todoRepository.save(todo);
-    return index(model, todo);
+    // return index(model, todo);
+    // index -> register -> index
+    // index -> submit -> register -> ブラウザにredirect指示(indexへ) -> index表示
+    return "redirect:/";
   }
 
   // 削除処理
   @PostMapping(value = "/remove")
-  public String removeSubmit(@ModelAttribute Todo todo, Model model) {
-    boolean myBooleanVariable = false;
-    // model.addAttribute("myBooleanVariable", myBooleanVariable);
-    model.getAttribute("removeId");
-    todoRepository.delete(id);
-    return index(model, todo);
+  public String remove(int id[], Model model) {
+    // 複数のidを受け取る
+    // todoの配列をもらう or idの配列をもらう
+    // for文でOK。いつものやNG。拡張for文でかく。
+    for (int removeId : id) {
+      todoRepository.deleteById(removeId);
+    }
+    return "redirect:/";
   }
+
+  // 更新処理
+  // 編集ボタンを押下したら、内容を編集できる画面に遷移する。
 
 }
