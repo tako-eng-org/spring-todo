@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.jpa.todos.TodoRepository;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.example.demo.jpa.todos.Todo;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMethod;
 // import org.springframework.data.domain;
 
 import java.util.ArrayList;
@@ -47,18 +49,36 @@ public class HomeController {
   }
 
   // 削除処理
-  @PostMapping(value = "/remove")
+  // @PostMapping(value = "/remove")
+  @RequestMapping(value = "/edit", params = "toRemove", method = RequestMethod.POST)
   public String remove(int id[], Model model) {
-    // 複数のidを受け取る
-    // todoの配列をもらう or idの配列をもらう
-    // for文でOK。いつものやNG。拡張for文でかく。
     for (int removeId : id) {
       todoRepository.deleteById(removeId);
     }
     return "redirect:/";
   }
 
-  // 更新処理
+  // ホーム画面で更新ボタンを押したときの処理
+  @RequestMapping(value = "/edit", params = "toUpdate", method = RequestMethod.POST)
+  public String goUpdate(Model model, Todo todo) {
+    model.addAttribute("todo", new Todo());
+    return "update";
+  }
+
+  // 更新画面で「変更して更新」ボタンを押したときの処理
+  @RequestMapping(value = "/update", method = RequestMethod.POST)
+  public String update(Model model, Todo todo) {
+    System.out.println("test");
+    // TODO ここにレコードを更新する処理を記載する。
+    return "redirect:/";
+  }
+
+  // @PostMapping(value = "/update")
+  // public String update(Model model) {
+  // System.out.println("test");
+  // return "update";
+  // }
+
   // 編集ボタンを押下したら、内容を編集できる画面に遷移する。
 
 }
