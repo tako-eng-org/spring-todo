@@ -16,7 +16,7 @@
             <div class="row">
               <div class="col">
                 <div class="form-check">
-                  <form action="#" th:action="@{/edit}" method="post">
+                  <form action="#" th:action="@{/remove}" method="post">
                     <ul th:each="record : ${allRecords}">
                       <input
                         class="form-check-input"
@@ -33,12 +33,12 @@
                         th:text="${record.body}"
                       ></label>
                       <!-- 更新処理画面へ遷移するボタン -->
-                      <p>
-                        <input type="submit" name="toUpdate" value="更新" />
-                      </p>
+                      <!-- //TODO idとbodyをupdate.htmlに渡したい。 -->
+                      <!-- <input type="submit" name="goUpdate" value="更新" /> -->
+                      <a th:href="@{${record.id}}">編集</a>
                       <!-- 更新処理画面へ遷移するボタン -->
                     </ul>
-                    <p><input type="submit" name="toRemove" value="削除" /></p>
+                    <p><input type="submit" value="削除" /></p>
                   </form>
 
                   <form

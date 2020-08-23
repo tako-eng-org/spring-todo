@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
+import java.sql.Timestamp;
 import com.example.demo.jpa.AbstractModel;
 
 @Entity
