@@ -16,22 +16,23 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import javax.persistence.Entity;
 
 // 日時情報など、1テーブルごとに必要になるような情報
 @EntityListeners(AuditingEntityListener.class)
-// @Table(name = "todos") // 不要かも。
 @Getter // lombokによる
 @Setter // lombokによる
 public abstract class AbstractModel {
   // @CreatedDate
   // @CreationTimestamp
   // @Temporal(TemporalType.TIMESTAMP)
-  @Column(nullable = true)
-  private Timestamp createdDate;
+
+  // @Column(nullable = true)
+  // private Timestamp createdDate;
 
   // @LastModifiedDate
-  @Column(nullable = true)
-  private Timestamp lastModifiedDate;
+  // @Column(nullable = true)
+  // private Timestamp lastModifiedDate;
 
   // @PreUpdate
   // public void onPreUpdate() {

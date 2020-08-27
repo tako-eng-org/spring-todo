@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
 // import org.springframework.data.domain;
+import java.sql.Timestamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,7 @@ public class EditController {
     Todo updateTodo = todoRepository.findById(id).orElse(null);
     // nullだったらエラーハンドリング
     updateTodo.setBody(todo.getBody());
+    updateTodo.setLastModifiedDate(new Timestamp(System.currentTimeMillis()));
     todoRepository.save(updateTodo);
     return "redirect:/";
   }

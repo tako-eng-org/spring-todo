@@ -22,6 +22,13 @@ public class Todo extends AbstractModel {
   @Column(nullable = false)
   private String body; // TODOリストの本文
 
+  @Column(nullable = true)
+  private Timestamp createdDate;
+
+  // @LastModifiedDate
+  @Column(nullable = true)
+  private Timestamp lastModifiedDate;
+
   // AbstractModelの2つもここに入っているイメージ
 
   // // setter,getterはlombokにより生成しているので不要。
