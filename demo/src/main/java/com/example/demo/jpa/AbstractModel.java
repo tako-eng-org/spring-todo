@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -20,15 +23,18 @@ import java.sql.Timestamp;
 @Getter // lombokによる
 @Setter // lombokによる
 public abstract class AbstractModel {
-  @Column(nullable = true)
-  private Timestamp createdDate = new Timestamp(System.currentTimeMillis());
-
   // @CreatedDate
-  // @Column(nullable = false)
-  // private Timestamp createdDate = Timestamp.valueOf(LocalDateTime.now());
+  // @CreationTimestamp
+  // @Temporal(TemporalType.TIMESTAMP)
+  @Column(nullable = true)
+  private Timestamp createdDate;
 
   // @LastModifiedDate
-  // @Column(nullable = false)
-  // private LocalTime lastModifiedDate;
+  @Column(nullable = true)
+  private Timestamp lastModifiedDate;
 
+  // @PreUpdate
+  // public void onPreUpdate() {
+  // setUpdatedDate(new Date());
+  // }
 }
