@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.jpa.todos.TodoRepository;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.example.demo.jpa.todos.Todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMethod;
-// import org.springframework.data.domain;
 import java.sql.Timestamp;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 public class EditController {
@@ -34,10 +25,7 @@ public class EditController {
     System.out.println(todo.getCreatedDate());
     model.addAttribute("todo", todo);
     // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY/MM/DD HH:mm:ss");
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
     model.addAttribute("createdDate", todo.getCreatedDate());
-    // model.addAttribute("lastModifiedDate",
-    // todo.getLastModifiedDate().format(dtf));
     return "edit";
   }
 
@@ -51,10 +39,4 @@ public class EditController {
     todoRepository.save(updateTodo);
     return "redirect:/";
   }
-
-  // @PostMapping(value = "/update")
-  // public String update(Model model) {
-  // System.out.println("test");
-  // return "update";
-  // }
 }
