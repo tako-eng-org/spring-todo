@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import java.sql.Timestamp;
 import com.example.demo.jpa.AbstractModel;
 
 @Entity
@@ -22,17 +21,4 @@ public class Todo extends AbstractModel {
   @Column(nullable = false)
   private String body; // TODOリストの本文
 
-  @Column(nullable = true)
-  private Timestamp createdDate;
-
-  // @LastModifiedDate
-  @Column(nullable = true)
-  private Timestamp lastModifiedDate;
-
-  // AbstractModelの2つもここに入っているイメージ
-
-  // // setter,getterはlombokにより生成しているので不要。
-  // public void setBody(String body) {
-  // this.body = body;
-  // }
 }

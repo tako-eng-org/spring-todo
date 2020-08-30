@@ -1,41 +1,28 @@
 package com.example.demo.jpa;
 
-import java.time.LocalTime;
-import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Table;
 import java.sql.Timestamp;
-import javax.persistence.Entity;
 
 // 日時情報など、1テーブルごとに必要になるような情報
+@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter // lombokによる
 @Setter // lombokによる
 public abstract class AbstractModel {
-  // @CreatedDate
-  // @CreationTimestamp
-  // @Temporal(TemporalType.TIMESTAMP)
+  @CreatedDate
+  @Column(nullable = false)
+  private Timestamp createdDate;
 
-  // @Column(nullable = true)
-  // private Timestamp createdDate;
+  @LastModifiedDate
+  @Column(nullable = false)
+  private Timestamp lastModifiedDate;
 
-  // @LastModifiedDate
-  // @Column(nullable = true)
-  // private Timestamp lastModifiedDate;
-
-  // @PreUpdate
-  // public void onPreUpdate() {
-  // setUpdatedDate(new Date());
-  // }
 }
